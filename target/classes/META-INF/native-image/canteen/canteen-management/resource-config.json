@@ -1,0 +1,9 @@
+{
+  "resources": [
+    "config.properties",
+    "fxml/cashier.fxml",
+    "fxml/qr_dialog.fxml",
+    "fxml/history_dialog.fxml",
+    "css/canteen.css"
+  ]
+}

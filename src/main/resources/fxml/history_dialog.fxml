@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="canteen.HistoryController"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <VBox spacing="10" padding="15">
+            <Label text="Order History" styleClass="dialog-title"/>
+            <HBox spacing="10" alignment="CENTER_LEFT" fillHeight="true">
+                <Label text="Status:"/>
+                <ComboBox fx:id="statusFilter" promptText="All" HBox.hgrow="ALWAYS"/>
+                <Label text="From:"/>
+                <DatePicker fx:id="fromDate" HBox.hgrow="ALWAYS"/>
+                <Label text="To:"/>
+                <DatePicker fx:id="toDate" HBox.hgrow="ALWAYS"/>
+                <Button text="Search" onAction="#search" styleClass="primary-button" maxWidth="Infinity"/>
+                <Button text="Clear" onAction="#clearFilters" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS" columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+            <columns>
+                <TableColumn fx:id="colId" text="Order ID" prefWidth="80" minWidth="60"/>
+                <TableColumn fx:id="colCustomer" text="Customer" prefWidth="150" minWidth="100"/>
+                <TableColumn fx:id="colMobile" text="Mobile" prefWidth="120" minWidth="100"/>
+                <TableColumn fx:id="colTotal" text="Total" prefWidth="100" minWidth="80"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="100" minWidth="80"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="150" minWidth="120"/>
+                <TableColumn fx:id="colActions" text="" prefWidth="100" minWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" padding="10" spacing="10">
+            <Label fx:id="summaryLabel" text=""/>
+            <Button text="Close" onAction="#closeDialog" cancelButton="true" maxWidth="Infinity"/>
+        </HBox>
+    </bottom>
+</BorderPane>

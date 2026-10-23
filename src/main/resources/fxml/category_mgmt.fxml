@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="canteen.CategoryManagementController"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="500" prefHeight="400">
+
+    <top>
+        <VBox spacing="10" padding="15">
+            <Label text="Manage Categories" styleClass="dialog-title"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="newCategoryField" promptText="New category name" HBox.hgrow="ALWAYS"/>
+                <Button text="Add" onAction="#handleAddCategory" styleClass="primary-button" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="categoryTable" VBox.vgrow="ALWAYS" columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+            <columns>
+                <TableColumn fx:id="colName" text="Category" prefWidth="300" minWidth="200"/>
+                <TableColumn fx:id="colActions" text="" prefWidth="100" minWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" padding="10" spacing="10">
+            <Button text="Close" onAction="#closeDialog" cancelButton="true" maxWidth="Infinity"/>
+        </HBox>
+    </bottom>
+</BorderPane>

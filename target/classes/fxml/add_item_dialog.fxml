@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="canteen.AddItemDialogController"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="400" prefHeight="350">
+
+    <top>
+        <Label text="Add Menu Item" styleClass="dialog-title" BorderPane.alignment="CENTER" padding="15"/>
+    </top>
+
+    <center>
+        <VBox spacing="12" padding="20" alignment="CENTER">
+            <Label text="Item Name:"/>
+            <TextField fx:id="nameField" promptText="Item name" maxWidth="300"/>
+
+            <Label text="Price (₹):"/>
+            <TextField fx:id="priceField" promptText="e.g. 45.00" maxWidth="300"/>
+
+            <Label text="Category:"/>
+            <ComboBox fx:id="categoryCombo" maxWidth="300" promptText="Select category"/>
+
+            <Label text="Available:"/>
+            <CheckBox fx:id="availableCheck" text="Available for ordering" selected="true"/>
+
+            <Label fx:id="errorLabel" text="" styleClass="error-label" wrapText="true" visible="false"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER" padding="15">
+            <Button fx:id="saveBtn" text="Save" onAction="#handleSave" styleClass="primary-button" defaultButton="true"/>
+            <Button fx:id="cancelBtn" text="Cancel" onAction="#handleCancel" cancelButton="true"/>
+        </HBox>
+    </bottom>
+</BorderPane>

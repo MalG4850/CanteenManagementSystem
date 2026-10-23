@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<BorderPane fx:controller="canteen.QrDialogController"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="500" prefHeight="700">
+
+    <top>
+        <Label fx:id="titleLabel" text="Order QR Code" styleClass="dialog-title" BorderPane.alignment="CENTER" padding="15"/>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <VBox alignment="CENTER" spacing="15" padding="20" fillWidth="true">
+                <Label fx:id="shortCodeLabel" text="" styleClass="short-code-label" wrapText="true"/>
+                <ImageView fx:id="billImageView" preserveRatio="true" fitWidth="460" smooth="true"/>
+                <Separator/>
+                <ImageView fx:id="qrImageView" preserveRatio="true" fitWidth="250" smooth="true"/>
+                <Label fx:id="orderInfoLabel" text="" wrapText="true" textAlignment="CENTER"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER" padding="15">
+            <Button fx:id="sendWhatsAppBtn" text="Send WhatsApp" onAction="#sendWhatsApp" styleClass="primary-button" defaultButton="true" maxWidth="Infinity"/>
+            <Button fx:id="closeBtn" text="Close" onAction="#closeDialog" cancelButton="true" maxWidth="Infinity"/>
+        </HBox>
+    </bottom>
+</BorderPane>

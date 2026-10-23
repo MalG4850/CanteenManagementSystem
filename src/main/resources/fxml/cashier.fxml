@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="canteen.CashierController"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <VBox spacing="5">
+            <MenuBar>
+                <menus>
+                    <Menu text="File">
+                        <items>
+                            <MenuItem text="Exit" onAction="#handleExit"/>
+                        </items>
+                    </Menu>
+<Menu text="View">
+                    <items>
+                        <MenuItem text="Order History" onAction="#handleHistory"/>
+                        <MenuItem text="Manage Menu" onAction="#handleManageMenu"/>
+                        <MenuItem text="Manage Categories" onAction="#handleManageCategories"/>
+                        <MenuItem text="Settings" onAction="#handleSettings"/>
+                    </items>
+                </Menu>
+                </menus>
+            </MenuBar>
+            <!-- Dashboard metrics -->
+            <TilePane fx:id="dashboardTilePane" hgap="10" vgap="10" prefColumns="3" 
+                      styleClass="dashboard-tilepane">
+                <padding><Insets top="5" right="10" bottom="5" left="10"/></padding>
+                <!-- Total Sales -->
+                <VBox alignment="CENTER" spacing="2" styleClass="metric-card">
+                    <Label text="Total Sales" styleClass="metric-title"/>
+                    <Label fx:id="totalSalesLabel" text="₹0.00" styleClass="metric-value"/>
+                </VBox>
+                <!-- Pending Orders -->
+                <VBox alignment="CENTER" spacing="2" styleClass="metric-card">
+                    <Label text="Pending Orders" styleClass="metric-title"/>
+                    <Label fx:id="pendingOrdersLabel" text="0" styleClass="metric-value"/>
+                </VBox>
+                <!-- Today's Revenue -->
+                <VBox alignment="CENTER" spacing="2" styleClass="metric-card">
+                    <Label text="Today's Revenue" styleClass="metric-title"/>
+                    <Label fx:id="todaysRevenueLabel" text="₹0.00" styleClass="metric-value"/>
+                </VBox>
+            </TilePane>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.6">
+            <items>
+                <!-- Menu Table -->
+                <VBox spacing="10" BorderPane.alignment="CENTER">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <Label text="Menu" styleClass="section-title"/>
+                    <TableView fx:id="menuTable" VBox.vgrow="ALWAYS" columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+                        <columns>
+                            <TableColumn fx:id="colItem" text="Item" prefWidth="200" minWidth="120"/>
+                            <TableColumn fx:id="colCategory" text="Category" prefWidth="120" minWidth="80"/>
+                            <TableColumn fx:id="colPrice" text="Price" prefWidth="80" minWidth="60"/>
+                            <TableColumn fx:id="colAdd" text="" prefWidth="80" minWidth="60"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Cart / Customer -->
+                <VBox fx:id="cartPane" spacing="10" styleClass="cart-pane" BorderPane.alignment="CENTER">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <Label text="Current Order" styleClass="section-title"/>
+                    <ListView fx:id="cartList" VBox.vgrow="ALWAYS"/>
+                    <Separator/>
+                    <Label text="Customer Mobile:"/>
+                    <TextField fx:id="customerMobileField" promptText="Mobile Number" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="placeOrderBtn" text="Place Order" onAction="#placeOrder" defaultButton="true" styleClass="primary-button" maxWidth="Infinity"/>
+                    <Button fx:id="clearCartBtn" text="Clear Cart" onAction="#clearCart" maxWidth="Infinity"/>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox fx:id="statusBar" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+            <padding><Insets top="5" right="10" bottom="5" left="10"/></padding>
+            <Label fx:id="statusLabel" text="Ready"/>
+        </HBox>
+    </bottom>
+</BorderPane>
